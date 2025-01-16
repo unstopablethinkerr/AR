@@ -32,7 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (event) => {
       const modelUrl = event.target.getAttribute('data-model');
       console.log('Loading model:', modelUrl); // Debugging line
+
+      // Update the gltf-model attribute directly
       ironman.setAttribute('gltf-model', modelUrl);
+
+      // Manually trigger the loading of the new model
+      ironman.components['gltf-model'].update({ src: modelUrl });
+
       objectList.style.display = 'none';
 
       // Check if the model loaded successfully
