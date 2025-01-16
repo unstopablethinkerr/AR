@@ -1,28 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const ironman = document.getElementById('ironman');
-  const toggleCameraButton = document.getElementById('toggleCamera');
+  const toggleArButton = document.getElementById('toggleAr');
   const scaleSlider = document.getElementById('scaleSlider');
   const rotateXSlider = document.getElementById('rotateXSlider');
   const rotateYSlider = document.getElementById('rotateYSlider');
   const rotateZSlider = document.getElementById('rotateZSlider');
 
-  let cameraEnabled = false;
+  let arEnabled = false;
 
-  toggleCameraButton.addEventListener('click', async () => {
-    if (!cameraEnabled) {
+  toggleArButton.addEventListener('click', async () => {
+    const scene = document.querySelector('a-scene');
+    if (!arEnabled) {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        document.querySelector('a-scene').object3D.visible = true;
-        cameraEnabled = true;
-        toggleCameraButton.textContent = 'Disable Camera';
+        scene.style.display = 'block';
+        arEnabled = true;
+        toggleArButton.textContent = 'Disable AR';
       } catch (error) {
         console.error('Error accessing camera:', error);
         alert('Camera access denied or not available.');
       }
     } else {
-      document.querySelector('a-scene').object3D.visible = false;
-      cameraEnabled = false;
-      toggleCameraButton.textContent = 'Access Camera';
+      scene.style.display = 'none';
+      arEnabled = false;
+      toggleArButton.textContent = 'Enable AR';
     }
   });
 
