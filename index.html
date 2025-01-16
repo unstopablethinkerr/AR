@@ -1,4 +1,9 @@
 <!--           gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)"<!DOCTYPE html> -->
+
+<!-- <button data-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)">Iron Man</button>
+    <button data-model="urlhttps://raw.githubusercontent.com/unstopablethinkerr/AR/main/cowboyhat.gltf)">Cowboy Hat</button> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +23,7 @@
   </div>
   <div id="glowEffect"></div>
   <div id="icon3D">
-    <img src="brush.png" alt="3D Icon">
+    <img src="path/to/3d-icon.png" alt="3D Icon">
   </div>
   <div id="objectList">
     <button data-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)">Iron Man</button>
@@ -66,6 +71,7 @@
       });
 
       icon3D.addEventListener('click', () => {
+        console.log('3D icon clicked'); // Debugging line
         objectList.style.display = objectList.style.display === 'flex' ? 'none' : 'flex';
       });
 
