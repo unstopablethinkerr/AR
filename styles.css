@@ -1,73 +1,90 @@
+/* General Reset */
 body {
   margin: 0;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
+/* Controls Panel */
 #controls {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, 0.8);
+  width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 10px;
   z-index: 10;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-#toggleAr {
+#controls label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#controls input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+#controls button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
   background-color: #007BFF;
-  color: white;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-#toggleAr:hover {
+#controls button:hover {
   background-color: #0056b3;
 }
 
+/* Sliders */
 .slider-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.slider-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 14px;
+.slider-group input[type="range"] {
+  margin-top: 5px;
 }
 
-input[type="range"] {
-  width: 100%;
-  -webkit-appearance: none;
-  background: #ddd;
-  outline: none;
-  opacity: 0.7;
-  transition: opacity .2s;
-  border-radius: 5px;
+/* AR Scene */
+a-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
 }
 
-input[type="range"]:hover {
-  opacity: 1;
+/* Tooltip Styling for Future Additions */
+.tooltip {
+  display: inline-block;
+  position: relative;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  background: #007BFF;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #007BFF;
-  cursor: pointer;
-  border-radius: 50%;
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 20;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
