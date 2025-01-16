@@ -47,13 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check if the model loaded successfully
       ironman.addEventListener('model-loaded', (e) => {
         message.style.display = 'none';
-        console.log('Model loaded successfully:', modelUrl); // Debugging line
       });
 
       ironman.addEventListener('model-error', (e) => {
         message.style.display = 'block';
         message.textContent = `Failed to load model: ${modelUrl}`;
-        console.error('Failed to load model:', modelUrl); // Debugging line
       });
     });
   });
