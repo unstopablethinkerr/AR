@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const icon3D = document.getElementById('icon3D');
   const objectList = document.getElementById('objectList');
   const objectButtons = document.querySelectorAll('#objectList button');
+  const message = document.getElementById('message');
 
   scaleSlider.addEventListener('input', (event) => {
     const scale = event.target.value;
@@ -33,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Loading model:', modelUrl); // Debugging line
       ironman.setAttribute('gltf-model', modelUrl);
       objectList.style.display = 'none';
+
+      // Check if the model loaded successfully
+      ironman.addEventListener('model-loaded', (e) => {
+        message.style.display = 'none';
+      });
+
+      ironman.addEventListener('model-error', (e) => {
+        message.style.display = 'block';
+        message.textContent = `Failed to load model: ${modelUrl}`;
+      });
     });
   });
 });
