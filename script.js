@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   icon3D.addEventListener('click', () => {
-    console.log('3D icon clicked'); // Debugging line
+    console.log('Brush icon clicked'); // Debugging line
     objectList.style.display = objectList.style.display === 'flex' ? 'none' : 'flex';
   });
 
