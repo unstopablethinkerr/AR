@@ -6,16 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const rotateYSlider = document.getElementById('rotateYSlider');
   const rotateZSlider = document.getElementById('rotateZSlider');
 
-  let cameraEnabled = true;
+  let cameraEnabled = false;
 
-  toggleCameraButton.addEventListener('click', () => {
-    cameraEnabled = !cameraEnabled;
-    if (cameraEnabled) {
-      toggleCameraButton.textContent = 'Disable Camera';
-      document.querySelector('a-scene').setAttribute('embedded', '');
+  toggleCameraButton.addEventListener('click', async () => {
+    if (!cameraEnabled) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        document.querySelector('a-scene').object3D.visible = true;
+        cameraEnabled = true;
+        toggleCameraButton.textContent = 'Disable Camera';
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+        alert('Camera access denied or not available.');
+      }
     } else {
+      document.querySelector('a-scene').object3D.visible = false;
+      cameraEnabled = false;
       toggleCameraButton.textContent = 'Access Camera';
-      document.querySelector('a-scene').removeAttribute('embedded');
     }
   });
 
