@@ -3,41 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive AR with A-Frame</title>
+  <title>AR Hiro Marker Tracking</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div id="controls">
-    <button id="toggleAr">Toggle AR</button>
-    <div>
-      <label for="scaleSlider">Scale:</label>
-      <input type="range" id="scaleSlider" min="0.1" max="2" step="0.1" value="1">
-    </div>
-    <div>
-      <label for="rotateXSlider">Rotate X:</label>
-      <input type="range" id="rotateXSlider" min="0" max="360" step="1" value="0">
-    </div>
-    <div>
-      <label for="rotateYSlider">Rotate Y:</label>
-      <input type="range" id="rotateYSlider" min="0" max="360" step="1" value="0">
-    </div>
-    <div>
-      <label for="rotateZSlider">Rotate Z:</label>
-      <input type="range" id="rotateZSlider" min="0" max="360" step="1" value="0">
-    </div>
-  </div>
+<body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
     <a-marker preset="hiro">
-      <a-entity id="ironman"
-                gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)"
-                position="0 0 0"
-                scale="1 1 1">
-      </a-entity>
+      <a-box position='0 0.5 0' material='color: black;'></a-box>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
-  <script src="script.js"></script>
 </body>
 </html>
