@@ -6,25 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const rotateYSlider = document.getElementById('rotateYSlider');
   const rotateZSlider = document.getElementById('rotateZSlider');
 
-  let arEnabled = false;
-
-  toggleArButton.addEventListener('click', async () => {
+  toggleArButton.addEventListener('click', () => {
     const scene = document.querySelector('a-scene');
-    if (!arEnabled) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        scene.style.display = 'block';
-        arEnabled = true;
-        toggleArButton.textContent = 'Disable AR';
-      } catch (error) {
-        console.error('Error accessing camera:', error);
-        alert('Camera access denied or not available.');
-      }
-    } else {
-      scene.style.display = 'none';
-      arEnabled = false;
-      toggleArButton.textContent = 'Enable AR';
-    }
+    scene.style.display = scene.style.display === 'none' ? 'block' : 'none';
+    toggleArButton.textContent = scene.style.display === 'none' ? 'Enable AR' : 'Disable AR';
   });
 
   scaleSlider.addEventListener('input', (event) => {
