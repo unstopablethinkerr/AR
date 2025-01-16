@@ -6,33 +6,19 @@
   <title>AR Hiro Marker Tracking</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    #arContainer {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    a-scene {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="arContainer">
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
       <a-marker preset="hiro">
-        <a-box position='0 0.5 0' material='color: black;'></a-box>
+        <a-entity
+          gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)"
+          position="0 0 0"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+        </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
