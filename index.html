@@ -18,6 +18,9 @@
       <label for="colorPicker">Color</label>
       <input type="color" id="colorPicker" value="#ff0000">
     </div>
+    <div class="control-group">
+      <button id="captureButton">Capture Image</button>
+    </div>
   </div>
   <div id="arContainer">
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
@@ -34,11 +37,15 @@
       <a-entity camera></a-entity>
     </a-scene>
   </div>
+  <canvas id="captureCanvas" style="display:none;"></canvas>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const ironman = document.getElementById('ironman');
       const scaleSlider = document.getElementById('scaleSlider');
       const colorPicker = document.getElementById('colorPicker');
+      const captureButton = document.getElementById('captureButton');
+      const captureCanvas = document.getElementById('captureCanvas');
+      const scene = document.querySelector('a-scene').object3D;
 
       scaleSlider.addEventListener('input', (event) => {
         const scale = event.target.value;
@@ -48,6 +55,18 @@
       colorPicker.addEventListener('input', (event) => {
         const color = event.target.value;
         ironman.setAttribute('material', 'color', color);
+      });
+
+      captureButton.addEventListener('click', () => {
+        const context = captureCanvas.getContext('2d');
+        captureCanvas.width = window.innerWidth;
+        captureCanvas.height = window.innerHeight;
+        context.drawImage(scene.renderer.domElement, 0, 0, captureCanvas.width, captureCanvas.height);
+
+        const link = document.createElement('a');
+        link.download = 'ar_capture.png';
+        link.href = captureCanvas.toDataURL('image/png');
+        link.click();
       });
     });
   </script>
