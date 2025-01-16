@@ -1,3 +1,4 @@
+<!--           gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)"<!DOCTYPE html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,15 @@
       <label for="scaleSlider">Scale</label>
       <input type="range" id="scaleSlider" min="0.01" max="0.25" step="0.005" value="0.1">
     </div>
+  </div>
+  <div id="glowEffect"></div>
+  <div id="icon3D">
+    <img src="path/to/3d-icon.png" alt="3D Icon">
+  </div>
+  <div id="objectList">
+    <button data-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)">Iron Man</button>
+    <button data-model="urlhttps://raw.githubusercontent.com/unstopablethinkerr/AR/main/cowboyhat.gltf)">Cowboy Hat</button>
+    <!-- Add more buttons for additional models -->
   </div>
   <div id="arContainer">
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
@@ -34,10 +44,37 @@
     document.addEventListener('DOMContentLoaded', () => {
       const ironman = document.getElementById('ironman');
       const scaleSlider = document.getElementById('scaleSlider');
+      const glowEffect = document.getElementById('glowEffect');
+      const icon3D = document.getElementById('icon3D');
+      const objectList = document.getElementById('objectList');
+      const objectButtons = document.querySelectorAll('#objectList button');
 
       scaleSlider.addEventListener('input', (event) => {
         const scale = event.target.value;
         ironman.setAttribute('scale', `${scale} ${scale} ${scale}`);
+      });
+
+      document.querySelector('a-marker').addEventListener('markerFound', () => {
+        glowEffect.style.display = 'block';
+        icon3D.style.display = 'flex';
+      });
+
+      document.querySelector('a-marker').addEventListener('markerLost', () => {
+        glowEffect.style.display = 'none';
+        icon3D.style.display = 'none';
+        objectList.style.display = 'none';
+      });
+
+      icon3D.addEventListener('click', () => {
+        objectList.style.display = objectList.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      objectButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          const modelUrl = event.target.getAttribute('data-model');
+          ironman.setAttribute('gltf-model', modelUrl);
+          objectList.style.display = 'none';
+        });
       });
     });
   </script>
