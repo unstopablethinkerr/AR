@@ -6,33 +6,34 @@
   <title>Interactive AR with A-Frame</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+ <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
   <div id="controls">
-    <button id="toggleAr">Enable AR</button>
-    <div class="slider-group">
+    <button id="toggleAr">Toggle AR</button>
+    <div>
       <label for="scaleSlider">Scale:</label>
       <input type="range" id="scaleSlider" min="0.1" max="2" step="0.1" value="1">
     </div>
-    <div class="slider-group">
+    <div>
       <label for="rotateXSlider">Rotate X:</label>
       <input type="range" id="rotateXSlider" min="0" max="360" step="1" value="0">
     </div>
-    <div class="slider-group">
+    <div>
       <label for="rotateYSlider">Rotate Y:</label>
       <input type="range" id="rotateYSlider" min="0" max="360" step="1" value="0">
     </div>
-    <div class="slider-group">
+    <div>
       <label for="rotateZSlider">Rotate Z:</label>
       <input type="range" id="rotateZSlider" min="0" max="360" step="1" value="0">
     </div>
   </div>
-  <a-scene embedded arjs="sourceType: image; sourceUrl: https://jeromeetienne.github.io/AR.js/three.js/examples/images/hirosamples/HIRO.jpg; debugUIEnabled: false;">
+  <a-scene embedded arjs>
     <a-marker-camera preset="hiro"></a-marker-camera>
-    <a-entity id="ironman"
-              gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)"
-              position="0 0 0"
+    <a-entity id="ironman" 
+              gltf-model="url(https://raw.githubusercontent.com/unstopablethinkerr/AR/main/IRONMAN.gltf)" 
+              position="0 0 0" 
               scale="1 1 1">
     </a-entity>
   </a-scene>
