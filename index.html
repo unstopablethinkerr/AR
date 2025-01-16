@@ -10,13 +10,17 @@
 </head>
 <body>
   <div id="controls">
-    <label for="scaleSlider">Scale:</label>
-    <input type="range" id="scaleSlider" min="0.01" max="1" step="0.01" value="0.1">
-    <label for="colorPicker">Color:</label>
-    <input type="color" id="colorPicker" value="#ff0000">
+    <div class="control-group">
+      <label for="scaleSlider">Scale</label>
+      <input type="range" id="scaleSlider" min="0.01" max="1" step="0.01" value="0.1">
+    </div>
+    <div class="control-group">
+      <label for="colorPicker">Color</label>
+      <input type="color" id="colorPicker" value="#ff0000">
+    </div>
   </div>
   <div id="arContainer">
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
       <a-marker preset="hiro">
         <a-entity
           id="ironman"
@@ -25,7 +29,6 @@
           scale="0.1 0.1 0.1"
           rotation="0 0 0"
           animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
-          <a-animation attribute="rotation" to="0 360 0" dur="10000" repeat="indefinite"></a-animation>
         </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
