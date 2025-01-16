@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   objectButtons.forEach(button => {
     button.addEventListener('click', (event) => {
       const modelUrl = event.target.getAttribute('data-model');
+      console.log('Loading model:', modelUrl); // Debugging line
       ironman.setAttribute('gltf-model', modelUrl);
       objectList.style.display = 'none';
     });
