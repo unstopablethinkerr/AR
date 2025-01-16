@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ironman.setAttribute('gltf-model', modelUrl);
 
       // Set a default scale for the new model
-      ironman.setAttribute('scale', '0.1 0.1 0.1');
+     // ironman.setAttribute('scale', '0.1 0.1 0.1');
 
       // Manually trigger the loading of the new model
       ironman.components['gltf-model'].update({ src: modelUrl });
