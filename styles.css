@@ -1,136 +1,22 @@
-/* General Reset */
-body {
+/* styles.css */
+body, html {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  overflow: hidden;
-  background-color: #f0f0f0;
-}
-
-/* Controls Panel */
-#controls {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 90%; /* Use percentage for responsive layout */
-  max-width: 350px; /* Limit width for larger screens */
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Labels */
-#controls label {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-/* Buttons */
-#controls button {
-  padding: 12px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007BFF;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#controls button:hover {
-  background-color: #0056b3;
-  transform: scale(1.03); /* Add a subtle zoom effect */
-}
-
-#controls button:active {
-  transform: scale(0.98); /* Button press effect */
-}
-
-/* Sliders */
-.slider-group {
-  display: flex;
-  flex-direction: column;
-}
-
-#controls input[type="range"] {
+  padding: 0;
   width: 100%;
-  height: 8px; /* Thicker slider for touch devices */
-  cursor: pointer;
-  appearance: none;
-  background: #ddd;
-  border-radius: 5px;
+  height: 100%;
+  overflow: hidden;
 }
 
-#controls input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 20px; /* Larger thumb for easier touch interaction */
-  height: 20px;
-  background-color: #007BFF;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#controls input[type="range"]::-webkit-slider-thumb:hover {
-  background-color: #0056b3;
-}
-
-/* AR Scene */
-a-scene {
+#arContainer {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
+  width: 100%;
+  height: 100%;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  #controls {
-    width: 95%; /* Expand controls for smaller screens */
-    top: 5px;
-    left: 5px;
-    padding: 15px;
-  }
-
-  #controls label {
-    font-size: 14px; /* Slightly smaller text for smaller screens */
-  }
-
-  #controls button {
-    font-size: 16px; /* Adjust button text size */
-    padding: 10px;
-  }
-
-  #controls input[type="range"] {
-    height: 10px; /* Slightly larger slider for touch */
-  }
-
-  #controls input[type="range"]::-webkit-slider-thumb {
-    width: 24px; /* Larger thumb for mobile */
-    height: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  #controls button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  #controls input[type="range"] {
-    height: 12px;
-  }
-
-  #controls input[type="range"]::-webkit-slider-thumb {
-    width: 28px;
-    height: 28px;
-  }
+a-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
