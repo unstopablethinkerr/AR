@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Interactive AR with Scaling and Color Shading</title>
+  <title>Interactive AR with Scaling</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
   <link rel="stylesheet" href="styles.css">
@@ -12,14 +12,7 @@
   <div id="controls">
     <div class="control-group">
       <label for="scaleSlider">Scale</label>
-      <input type="range" id="scaleSlider" min="0.01" max="1" step="0.01" value="0.1">
-    </div>
-    <div class="control-group">
-      <label for="colorPicker">Color</label>
-      <input type="color" id="colorPicker" value="#ff0000">
-    </div>
-    <div class="control-group">
-      <button id="captureButton">Capture Image</button>
+      <input type="range" id="scaleSlider" min="0.01" max="0.5" step="0.005" value="0.1">
     </div>
   </div>
   <div id="arContainer">
@@ -37,38 +30,11 @@
       <a-entity camera></a-entity>
     </a-scene>
   </div>
-  <canvas id="captureCanvas" style="display:none;"></canvas>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const ironman = document.getElementById('ironman');
       const scaleSlider = document.getElementById('scaleSlider');
-      const colorPicker = document.getElementById('colorPicker');
-      const captureButton = document.getElementById('captureButton');
-      const captureCanvas = document.getElementById('captureCanvas');
-      const scene = document.querySelector('a-scene').object3D;
 
       scaleSlider.addEventListener('input', (event) => {
         const scale = event.target.value;
-        ironman.setAttribute('scale', `${scale} ${scale} ${scale}`);
-      });
-
-      colorPicker.addEventListener('input', (event) => {
-        const color = event.target.value;
-        ironman.setAttribute('material', 'color', color);
-      });
-
-      captureButton.addEventListener('click', () => {
-        const context = captureCanvas.getContext('2d');
-        captureCanvas.width = window.innerWidth;
-        captureCanvas.height = window.innerHeight;
-        context.drawImage(scene.renderer.domElement, 0, 0, captureCanvas.width, captureCanvas.height);
-
-        const link = document.createElement('a');
-        link.download = 'ar_capture.png';
-        link.href = captureCanvas.toDataURL('image/png');
-        link.click();
-      });
-    });
-  </script>
-</body>
-</html>
+        ironman.setAttribute('scale', `${scale} ${sca
