@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const ironman = document.getElementById('ironman');
   const scaleSlider = document.getElementById('scaleSlider');
+  const rotationSlider = document.getElementById('rotationSlider'); // Define rotationSlider
   const glowEffect = document.getElementById('glowEffect');
   const icon3D = document.getElementById('icon3D');
   const objectList = document.getElementById('objectList');
@@ -12,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ironman.setAttribute('scale', `${scale} ${scale} ${scale}`);
   });
 
-   rotationSlider.addEventListener('input', (event) => {
+  rotationSlider.addEventListener('input', (event) => { // Use rotationSlider
     const rotation = event.target.value;
-    ironmanEntity.setAttribute('rotation', `0 ${rotation} 0`);
+    ironman.setAttribute('rotation', `0 ${rotation} 0`); // Update ironman's rotation
   });
 
   document.querySelector('a-marker').addEventListener('markerFound', () => {
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ironman.setAttribute('gltf-model', modelUrl);
 
       // Set a default scale for the new model
-     // ironman.setAttribute('scale', '0.1 0.1 0.1');
+      // ironman.setAttribute('scale', '0.1 0.1 0.1');
 
       // Manually trigger the loading of the new model
       ironman.components['gltf-model'].update({ src: modelUrl });
