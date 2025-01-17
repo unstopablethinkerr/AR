@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ironman.setAttribute('scale', `${scale} ${scale} ${scale}`);
   });
 
+   rotationSlider.addEventListener('input', (event) => {
+    const rotation = event.target.value;
+    ironmanEntity.setAttribute('rotation', `0 ${rotation} 0`);
+  });
+
   document.querySelector('a-marker').addEventListener('markerFound', () => {
     glowEffect.style.display = 'block';
     icon3D.style.display = 'flex';
